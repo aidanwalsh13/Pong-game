@@ -1,0 +1,39 @@
+START
+  │
+  ▼
+pygame.init()           ← Initialize Pygame
+screen = pygame.display.set_mode(...)   ← Create display surface
+clock = pygame.time.Clock()             ← Optional, for frame rate control
+# Define any static objects here (e.g., rectangles, images)
+player1 = pygame.Rect(200, 150, 150, 100)
+player2 = pygame.Rect(1600, 150, 150, 100)
+  │
+  ▼
+MAIN LOOP (runs every frame)
+  │
+  ├─> Handle events
+  │      for event in pygame.event.get():
+  │          if event.type == pygame.QUIT:
+  │              running = False
+  │
+  ├─> Update game state
+  │      (e.g., move paddles, ball, check collisions)
+  │
+  ├─> Clear the screen
+  │      screen.fill((0, 0, 0))
+  │
+  ├─> Draw everything
+  │      pygame.draw.rect(screen, color, player1)
+  │      pygame.draw.rect(screen, color, player2)
+  │      ...draw ball, scores, etc.
+  │
+  ├─> Update the display
+  │      pygame.display.flip()  ← shows everything drawn this frame
+  │
+  └─> Tick the clock (optional)
+         clock.tick(60)  ← limit to 60 FPS
+  │
+  ▼
+END LOOP (when running = False)
+  │
+pygame.quit()            ← Close the game safely
